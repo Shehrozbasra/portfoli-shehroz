@@ -3,44 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Generic Portfolio — Anil Singh</title>
+<title>Anil Singh — ICT Enthusiast & Aspiring Network Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
+  body { background: #fff; color: #333; font-family: 'Open Sans', Arial, sans-serif; font-size: 14px; line-height: 1.6; }
 
-  body {
-    background: #fff;
-    color: #333;
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  /* ── TOP BAR ── */
-  .topbar {
-    background: #1a1a2e;
-    padding: 0.6rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .topbar-logo {
-    color: #fff;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-  .topbar-right {
-    display: flex; align-items: center; gap: 1rem;
-  }
-  .login-btn {
-    background: none; border: 1px solid rgba(255,255,255,0.4);
-    color: #fff; font-size: 0.78rem; padding: 0.3rem 0.8rem;
-    border-radius: 4px; cursor: pointer; font-family: inherit;
-    transition: background 0.2s;
-  }
+  /* TOP BAR */
+  .topbar { background: #1a1a2e; padding: 0.6rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .topbar-logo { color: #fff; font-size: 0.85rem; font-weight: 600; }
+  .topbar-right { display: flex; align-items: center; gap: 1rem; }
+  .login-btn { background: none; border: 1px solid rgba(255,255,255,0.4); color: #fff; font-size: 0.78rem; padding: 0.3rem 0.8rem; border-radius: 4px; cursor: pointer; font-family: inherit; transition: background 0.2s; }
   .login-btn:hover { background: rgba(255,255,255,0.1); }
   .nav-user { display: none; align-items: center; gap: 0.6rem; }
   .nav-user.visible { display: flex; }
@@ -48,238 +23,152 @@
   .nav-user-name { font-size: 0.78rem; color: #fff; }
   .nav-signout { font-size: 0.7rem; color: rgba(255,255,255,0.6); cursor: pointer; text-decoration: underline; background: none; border: none; font-family: inherit; }
 
-  /* ── PAGE WRAPPER ── */
-  .page {
+  /* PROFESSIONAL HERO HEADER */
+  .profile-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #2d2d5e 100%);
+    color: #fff;
+    padding: 2.5rem 2rem;
+  }
+  .profile-header-inner {
     max-width: 960px;
     margin: 0 auto;
-    padding: 2rem 1.5rem 4rem;
-  }
-
-  /* ── PAGE TITLE ── */
-  .page-title {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #1a1a2e;
-    margin-bottom: 0.2rem;
-  }
-  .page-author {
-    font-size: 0.82rem;
-    color: #888;
-    margin-bottom: 2rem;
-  }
-
-  /* ── SECTION BLOCK ── */
-  .block {
-    margin-bottom: 1.5rem;
-  }
-  .block-header {
-    background: #1a1a2e;
-    color: #fff;
-    font-size: 0.78rem;
-    font-weight: 600;
-    padding: 0.45rem 0.8rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    border-radius: 4px 4px 0 0;
+    gap: 2rem;
+  }
+  .profile-photo {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.5);
+    overflow: hidden;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.1);
+  }
+  .profile-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .profile-info { flex: 1; }
+  .profile-name { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 0.2rem; }
+  .profile-title { font-size: 0.95rem; color: rgba(255,255,255,0.75); margin-bottom: 0.6rem; font-weight: 400; }
+  .profile-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem; }
+  .profile-tag {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.2rem 0.65rem;
+    border-radius: 3px;
     letter-spacing: 0.3px;
   }
-  .block-header .icon { font-size: 0.75rem; opacity: 0.7; }
-  .block-body {
-    border: 1px solid #ddd;
-    border-top: none;
-    padding: 1.2rem 1.4rem;
-    border-radius: 0 0 4px 4px;
-    background: #fff;
+  .profile-contacts { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .profile-contact-item {
+    display: flex; align-items: center; gap: 0.35rem;
+    font-size: 0.8rem; color: rgba(255,255,255,0.8);
+    text-decoration: none;
+  }
+  .profile-contact-item:hover { color: #fff; }
+  @media(max-width:600px){
+    .profile-header-inner { flex-direction: column; text-align: center; }
+    .profile-tags,.profile-contacts { justify-content: center; }
   }
 
-  /* ── GRID ── */
-  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2rem; }
+  /* PAGE */
+  .page { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  /* BLOCK */
+  .block { margin-bottom: 1.5rem; }
+  .block-header { background: #1a1a2e; color: #fff; font-size: 0.78rem; font-weight: 600; padding: 0.45rem 0.8rem; display: flex; align-items: center; gap: 0.5rem; border-radius: 4px 4px 0 0; }
+  .block-body { border: 1px solid #ddd; border-top: none; padding: 1.2rem 1.4rem; border-radius: 0 0 4px 4px; background: #fff; }
+
+  /* GRIDS */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  @media(max-width:700px){ .grid-3,.grid-2 { grid-template-columns:1fr; } }
+  @media(max-width:700px){ .grid-2 { grid-template-columns:1fr; } }
 
-  /* ── TEXT ── */
-  h2 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #1a1a2e;
-    margin-bottom: 0.6rem;
-    padding-bottom: 0.3rem;
-    border-bottom: 2px solid #1a1a2e;
-    display: inline-block;
-  }
+  /* BOOTCAMP + LINKEDIN side by side */
+  .side-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.5rem; }
+  @media(max-width:700px){ .side-blocks { grid-template-columns:1fr; } }
+
+  /* TEXT */
+  h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.6rem; padding-bottom: 0.3rem; border-bottom: 2px solid #1a1a2e; display: inline-block; }
   p { color: #444; margin-bottom: 0.7rem; font-size: 0.88rem; }
   p:last-child { margin-bottom: 0; }
   strong { color: #1a1a2e; }
-
-  /* ── LINK ── */
   a { color: #1a1a2e; }
-  a:hover { color: #4a4a8e; }
+  .tdm-link { color: #0066cc; font-size: 0.85rem; word-break: break-all; }
 
-  .tdm-link {
-    color: #0066cc;
-    font-size: 0.85rem;
-    word-break: break-all;
-  }
+  /* STAR LABEL */
+  .star-label { font-size: 0.72rem; font-weight: 700; color: #1a1a2e; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.65rem; margin-bottom: 0.1rem; border-left: 3px solid #1a1a2e; padding-left: 0.4rem; }
 
-  /* ── STAR LABEL ── */
-  .star-label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: #1a1a2e;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-top: 0.65rem;
-    margin-bottom: 0.1rem;
-    border-left: 3px solid #1a1a2e;
-    padding-left: 0.4rem;
-  }
-
-  /* ── PROJECT CARDS ── */
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1rem; }
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
   .project-card { border: 1px solid #ddd; border-radius: 4px; padding: 1rem; }
   .project-title { font-weight: 700; color: #1a1a2e; font-size: 0.92rem; margin-bottom: 0.4rem; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.5rem; }
-  .tag {
-    background: #f0f0f5;
-    color: #1a1a2e;
-    font-size: 0.65rem;
-    font-weight: 600;
-    padding: 0.12rem 0.5rem;
-    border-radius: 3px;
-    border: 1px solid #ddd;
-  }
+  .tag { background: #f0f0f5; color: #1a1a2e; font-size: 0.65rem; font-weight: 600; padding: 0.12rem 0.5rem; border-radius: 3px; border: 1px solid #ddd; }
 
-  /* ── SKILLS BARS ── */
+  /* SKILLS */
   .skill-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; }
   .skill-row:last-child { margin-bottom: 0; }
   .skill-label { font-size: 0.82rem; color: #555; min-width: 150px; }
   .skill-bar-bg { flex: 1; height: 8px; background: #eee; border-radius: 999px; overflow: hidden; }
   .skill-bar { height: 100%; background: #1a1a2e; border-radius: 999px; }
 
-  /* ── TIMELINE ── */
-  .timeline { display: flex; flex-direction: column; }
+  /* TIMELINE */
   .tl-item { display: grid; grid-template-columns: 100px 1fr; gap: 1.4rem; padding: 1rem 0; border-bottom: 1px solid #eee; }
   .tl-item:last-child { border-bottom: none; }
-  .tl-year { font-weight: 700; font-size: 0.8rem; color: #1a1a2e; padding-top: 0.1rem; }
+  .tl-year { font-weight: 700; font-size: 0.8rem; color: #1a1a2e; }
   .tl-inst { font-size: 0.8rem; color: #888; margin-bottom: 0.3rem; }
-  @media(max-width:480px){ .tl-item { grid-template-columns:1fr; gap:0.2rem; } }
+  @media(max-width:480px){ .tl-item { grid-template-columns:1fr; } }
 
-  /* ── LINKEDIN ── */
-  .linkedin-box {
-    display: flex; align-items: flex-start; gap: 1rem;
-    border: 1px solid #ddd; border-radius: 4px; padding: 1rem;
-  }
-  .li-avatar {
-    width: 56px; height: 56px; border-radius: 50%;
-    overflow: hidden; flex-shrink: 0;
-    background: #eee; border: 1px solid #ccc;
-  }
-  /* REPLACE src: YOUR_LINKEDIN_PHOTO_URL_HERE */
+  /* LINKEDIN CARD */
+  .linkedin-box { display: flex; align-items: flex-start; gap: 1rem; border: 1px solid #ddd; border-radius: 4px; padding: 1rem; background: #f9f9fc; }
+  .li-avatar { width: 56px; height: 56px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 2px solid #1a1a2e; background: #eee; }
   .li-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .li-name { font-weight: 700; font-size: 0.95rem; color: #1a1a2e; }
-  .li-title { font-size: 0.78rem; color: #666; margin-bottom: 0.4rem; }
-  .li-btn {
-    display: inline-flex; align-items: center; gap: 0.35rem;
-    background: #0077b5; color: #fff;
-    font-size: 0.72rem; font-weight: 600;
-    padding: 0.25rem 0.7rem; border-radius: 3px;
-    text-decoration: none;
-  }
+  .li-title { font-size: 0.78rem; color: #666; margin-bottom: 0.5rem; line-height: 1.4; }
+  .li-btn { display: inline-flex; align-items: center; gap: 0.35rem; background: #0077b5; color: #fff; font-size: 0.72rem; font-weight: 600; padding: 0.28rem 0.7rem; border-radius: 3px; text-decoration: none; }
+  .li-btn:hover { background: #005f8e; }
 
-  /* ── CV ── */
+  /* CV */
   .cv-box { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; }
-  .cv-toolbar {
-    background: #f5f5f5; border-bottom: 1px solid #ddd;
-    padding: 0.6rem 1rem;
-    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  }
+  .cv-toolbar { background: #f5f5f5; border-bottom: 1px solid #ddd; padding: 0.6rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
   .cv-toolbar span { font-size: 0.82rem; color: #555; }
-  .cv-download-btn {
-    background: #1a1a2e; color: #fff;
-    font-size: 0.75rem; font-weight: 600;
-    padding: 0.3rem 0.8rem; border-radius: 3px;
-    text-decoration: none;
-  }
-  /*
-    =====================================================
-    CV EMBED:
-    Once you have your CV link, remove the cv-placeholder
-    div and uncomment the iframe below, replacing src:
-    <iframe class="cv-frame" src="YOUR_CV_FILE_URL_HERE"></iframe>
-    =====================================================
-  */
+  .cv-download-btn { background: #1a1a2e; color: #fff; font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.8rem; border-radius: 3px; text-decoration: none; }
   .cv-frame { width: 100%; height: 520px; border: none; display: block; }
-  .cv-placeholder {
-    height: 420px; display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 0.6rem; color: #999; font-size: 0.85rem; text-align: center;
-    background: #fafafa;
-  }
-  .cv-placeholder svg { opacity: 0.25; }
 
-  /* ── CERTIFICATES ── */
-  .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+  /* CERTIFICATES */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 1rem; }
   .cert-card { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; cursor: pointer; transition: box-shadow 0.2s; }
-  .cert-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
-  .cert-img { width: 100%; height: 140px; object-fit: cover; display: block; background: #f5f5f5; }
-  .cert-img-placeholder {
-    width: 100%; height: 140px; background: #f5f5f5;
-    display: flex; align-items: center; justify-content: center;
-    color: #bbb; font-size: 0.78rem; text-align: center; padding: 1rem;
-  }
-  .cert-info { padding: 0.6rem 0.8rem; }
-  .cert-title { font-weight: 700; font-size: 0.82rem; color: #1a1a2e; }
-  .cert-issuer { font-size: 0.72rem; color: #888; }
-  .cert-link { display: inline-block; margin-top: 0.35rem; font-size: 0.72rem; color: #0066cc; text-decoration: none; }
+  .cert-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.12); }
+  .cert-img { width: 100%; height: 130px; object-fit: cover; display: block; background: #f5f5f5; }
+  .cert-info { padding: 0.55rem 0.7rem; }
+  .cert-title { font-weight: 700; font-size: 0.8rem; color: #1a1a2e; }
+  .cert-issuer { font-size: 0.7rem; color: #888; }
+  .cert-link { display: inline-block; margin-top: 0.3rem; font-size: 0.7rem; color: #0066cc; text-decoration: none; }
   .cert-link:hover { text-decoration: underline; }
 
-  /* ── LIGHTBOX ── */
-  .lightbox { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.88); align-items: center; justify-content: center; }
+  /* LIGHTBOX */
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
   .lightbox.open { display: flex; }
   .lightbox img { max-width: 90vw; max-height: 88vh; border-radius: 4px; }
   .lb-close { position: fixed; top: 1rem; right: 1.5rem; font-size: 2rem; color: #fff; cursor: pointer; background: none; border: none; line-height: 1; }
 
-  /* ── CONTACT ── */
+  /* CONTACT */
   .contact-links { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 0.8rem; }
-  .contact-chip {
-    display: flex; align-items: center; gap: 0.4rem;
-    background: #f5f5f5; border: 1px solid #ddd;
-    color: #333; text-decoration: none;
-    padding: 0.45rem 0.9rem; border-radius: 4px;
-    font-size: 0.82rem; font-weight: 600;
-    transition: background 0.2s;
-  }
+  .contact-chip { display: flex; align-items: center; gap: 0.4rem; background: #f5f5f5; border: 1px solid #ddd; color: #333; text-decoration: none; padding: 0.45rem 0.9rem; border-radius: 4px; font-size: 0.82rem; font-weight: 600; transition: background 0.2s; }
   .contact-chip:hover { background: #1a1a2e; color: #fff; }
 
-  /* ── FOOTER ── */
-  footer {
-    background: #1a1a2e; color: rgba(255,255,255,0.5);
-    text-align: center; padding: 1.2rem;
-    font-size: 0.75rem; margin-top: 3rem;
-  }
+  /* FOOTER */
+  footer { background: #1a1a2e; color: rgba(255,255,255,0.5); text-align: center; padding: 1.2rem; font-size: 0.75rem; margin-top: 3rem; }
 
-  /* ── LOGIN MODAL ── */
+  /* MODAL */
   .modal-overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; }
   .modal-overlay.open { display: flex; }
-  .modal {
-    background: #fff; border-radius: 6px; padding: 2rem 1.8rem;
-    width: 100%; max-width: 360px; text-align: center;
-    position: relative; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    animation: popIn 0.2s ease;
-  }
+  .modal { background: #fff; border-radius: 6px; padding: 2rem 1.8rem; width: 100%; max-width: 360px; text-align: center; position: relative; box-shadow: 0 8px 32px rgba(0,0,0,0.2); animation: popIn 0.2s ease; }
   @keyframes popIn { from{opacity:0;transform:scale(0.95)} to{opacity:1;transform:none} }
   .modal-close { position: absolute; top: 0.8rem; right: 1rem; background: none; border: none; font-size: 1.3rem; color: #999; cursor: pointer; }
   .modal-title { font-size: 1.1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.2rem; }
   .modal-sub { font-size: 0.82rem; color: #888; margin-bottom: 1.5rem; }
-  .google-btn {
-    display: flex; align-items: center; justify-content: center; gap: 0.7rem;
-    width: 100%; padding: 0.75rem 1rem;
-    background: #fff; color: #333; border: 1px solid #ddd;
-    border-radius: 4px; font-family: inherit; font-size: 0.88rem; font-weight: 600;
-    cursor: pointer; transition: box-shadow 0.2s;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  }
+  .google-btn { display: flex; align-items: center; justify-content: center; gap: 0.7rem; width: 100%; padding: 0.75rem 1rem; background: #fff; color: #333; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: box-shadow 0.2s; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
   .google-btn:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
   .modal-note { font-size: 0.7rem; color: #bbb; margin-top: 1rem; }
 </style>
@@ -299,15 +188,47 @@
   </div>
 </div>
 
+<!-- PROFESSIONAL HEADER WITH PHOTO -->
+<div class="profile-header">
+  <div class="profile-header-inner">
+    <div class="profile-photo">
+      <img src="linkdin.jpeg" alt="Anil Singh">
+    </div>
+    <div class="profile-info">
+      <div class="profile-name">Anil Singh</div>
+      <div class="profile-title">ICT Enthusiast &amp; Aspiring Network Engineer</div>
+      <div class="profile-tags">
+        <span class="profile-tag">Network Engineering</span>
+        <span class="profile-tag">IT Support</span>
+        <span class="profile-tag">Cloud &amp; Virtualisation</span>
+        <span class="profile-tag">Cybersecurity</span>
+        <span class="profile-tag">Cisco Packet Tracer</span>
+        <span class="profile-tag">TDM Skills Bootcamp</span>
+      </div>
+      <div class="profile-contacts">
+        <a href="mailto:anildigpal@outlook.com" class="profile-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          anildigpal@outlook.com
+        </a>
+        <a href="tel:07463455065" class="profile-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+          07463 455065
+        </a>
+        <a href="https://www.linkedin.com/in/anil-singh-75059b293" target="_blank" class="profile-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
+          LinkedIn Profile
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- PAGE -->
 <div class="page">
 
-  <div class="page-title">Generic portfolio</div>
-  <div class="page-author">by Anil Singh</div>
-
-  <!-- ── INTRODUCTION ── -->
+  <!-- INTRODUCTION -->
   <div class="block">
-    <div class="block-header"><span class="icon">✏️</span> Introduction</div>
+    <div class="block-header">✏️ Introduction</div>
     <div class="block-body">
       <h2>Introduction</h2>
       <p>Welcome to my portfolio. This collection highlights my journey into the IT and networking world, showcasing my skills, experiences, and achievements so far. Inside, you'll find examples of my career projects, mini-labs, and hands-on exercises, including cloud management, virtualisation, and cybersecurity work. These projects have helped me develop practical IT skills, problem-solving abilities, and an understanding of how systems work in real-world environments.</p>
@@ -316,53 +237,29 @@
     </div>
   </div>
 
-  <!-- ── BOOTCAMP + PERSONAL PROFILE + LINKEDIN ── -->
-  <div class="grid-3">
-
-    <!-- Bootcamp Work -->
-    <div class="block">
-      <div class="block-header"><span class="icon">✏️</span> Bootcamp work</div>
+  <!-- BOOTCAMP + LINKEDIN side by side -->
+  <div class="side-blocks">
+    <div class="block" style="margin-bottom:0;">
+      <div class="block-header">✏️ Bootcamp Work</div>
       <div class="block-body">
         <h2>Bootcamp Work</h2>
-        <!-- REPLACE with your TDM bootcamp link if different -->
+        <p>My full bootcamp evidence and project submissions are available on the TDM platform:</p>
         <a class="tdm-link" href="https://ep.tdm.co.uk/view/view.php?id=26605" target="_blank">https://ep.tdm.co.uk/view/view.php?id=26605</a>
       </div>
     </div>
 
-    <!-- Personal Profile -->
-    <div class="block">
-      <div class="block-header"><span class="icon">✏️</span> Personal Profile</div>
-      <div class="block-body">
-        <h2>About me —</h2>
-        <p>Growing up, I was always the person my household turned to for technical problems. Whether it was fixing devices, setting up WiFi, or troubleshooting small issues, my family relied on me. Even solving minor problems made me feel proud and valuable.</p>
-        <p>Over time, this naturally developed into an interest in IT, though I didn't fully realise it was my true passion at first. I went through different jobs, and one day someone said, "You're good with technology, why haven't you made a career out of it?"</p>
-        <p>That question made me reflect. I realised I had been following normal career paths instead of pursuing what I was naturally good at.</p>
-        <p>I'm here today in this skills bootcamp because I want to succeed more than ever. My dad never got to see me have a career, and personally, I felt useless without fulfilling my potential. Now that he's gone, I feel even more driven. I wish I could have shown him what I could do when he was here, and now it feels like my duty to him and to me to make this count.</p>
-        <p>I'm interested in tech because I enjoy problem-solving and structured thinking. I like understanding how systems work and finding logical solutions when things go wrong. Technology gives me focus, clarity, and the satisfaction of creating tangible results from knowledge and effort.</p>
-      </div>
-    </div>
-
-    <!-- LinkedIn -->
-    <div class="block">
-      <div class="block-header"><span class="icon">✏️</span> LinkedIn Account</div>
+    <div class="block" style="margin-bottom:0;">
+      <div class="block-header">✏️ LinkedIn Account</div>
       <div class="block-body">
         <h2>LinkedIn Account</h2>
         <div class="linkedin-box">
           <div class="li-avatar">
-            <!--
-              REPLACE src with your LinkedIn photo
-              e.g. src="images/anil-linkedin.jpg"
-            -->
-            <img src="YOUR_LINKEDIN_PHOTO_URL_HERE" alt="Anil Singh">
+            <img src="linkdin.jpeg" alt="Anil Singh">
           </div>
           <div>
             <div class="li-name">Anil Singh ✓</div>
             <div class="li-title">ICT Enthusiast | Eager to Launch a Career in Tech</div>
-            <!--
-              REPLACE href with your LinkedIn URL
-              e.g. href="https://linkedin.com/in/anil-singh"
-            -->
-            <a class="li-btn" href="YOUR_LINKEDIN_PROFILE_URL_HERE" target="_blank">
+            <a class="li-btn" href="https://www.linkedin.com/in/anil-singh-75059b293?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
               View LinkedIn
             </a>
@@ -370,99 +267,83 @@
         </div>
       </div>
     </div>
+  </div>
 
-  </div><!-- end grid-3 -->
+  <!-- PERSONAL PROFILE — full width, looks good -->
+  <div class="block" style="margin-top:1.2rem;">
+    <div class="block-header">✏️ Personal Profile</div>
+    <div class="block-body" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+      <div>
+        <h2>About Me</h2>
+        <p>Growing up, I was always the person my household turned to for technical problems. Whether it was fixing devices, setting up WiFi, or troubleshooting small issues, my family relied on me. Even solving minor problems made me feel proud and valuable.</p>
+        <p>Over time, this naturally developed into an interest in IT, though I didn't fully realise it was my true passion at first. I went through different jobs, and one day someone said, "You're good with technology, why haven't you made a career out of it?" That question made me reflect — I realised I had been following normal career paths instead of pursuing what I was naturally good at.</p>
+        <p>I'm interested in tech because I enjoy problem-solving and structured thinking. I like understanding how systems work and finding logical solutions when things go wrong. Technology gives me focus, clarity, and the satisfaction of creating tangible results from knowledge and effort.</p>
+      </div>
+      <div>
+        <h2>My Drive</h2>
+        <p>I'm here today in this skills bootcamp because I want to succeed more than ever. My dad never got to see me have a career, and personally, I felt I wasn't fulfilling my potential. Now that he's gone, I feel even more driven.</p>
+        <p>I wish I could have shown him what I could do when he was here, and now it feels like my duty — to him and to myself — to make this count. This bootcamp is not just about learning IT; it's about proving to myself that I can build the career I should have started earlier.</p>
+        <p>I bring dedication, hunger to learn, and a genuine passion for technology to everything I do. I am committed to growing into a skilled Network Engineer and contributing meaningfully to any organisation I join.</p>
+      </div>
+    </div>
+  </div>
 
-  <!-- ── CV ── -->
+  <!-- CV -->
   <div class="block">
-    <div class="block-header"><span class="icon">✏️</span> CV</div>
+    <div class="block-header">✏️ CV</div>
     <div class="block-body">
       <h2>CV</h2>
       <div class="cv-box">
         <div class="cv-toolbar">
           <span>📄 Anil Singh — Curriculum Vitae</span>
-          <!--
-            REPLACE href with your CV file URL
-            e.g. href="files/anil-cv.pdf"
-          -->
-          <a class="cv-download-btn" href="YOUR_CV_FILE_URL_HERE" target="_blank" download>⬇ Download CV</a>
+          <a class="cv-download-btn" href="Linkedin CV.pdf" target="_blank" download>⬇ Download CV</a>
         </div>
-        <!--
-          =====================================================
-          CV EMBED — two options:
-
-          Option A (PDF in your repo):
-            1. Upload cv.pdf to your GitHub repo
-            2. Remove the cv-placeholder div below
-            3. Uncomment this line and replace the src:
-          <iframe class="cv-frame" src="YOUR_CV_FILE_URL_HERE"></iframe>
-
-          Option B (Google Drive):
-            1. Upload to Google Drive
-            2. Share → Anyone with link → Copy link
-            3. Change /view to /preview in the URL
-            4. Remove the cv-placeholder div below
-            5. Uncomment the iframe and paste your preview URL
-          =====================================================
-        -->
-        <div class="cv-placeholder">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-          </svg>
-          <p style="color:#aaa;margin:0;">Replace <strong style="color:#555;">YOUR_CV_FILE_URL_HERE</strong> in the code with your CV path</p>
-        </div>
+        <iframe class="cv-frame" src="Linkedin CV.pdf"></iframe>
       </div>
     </div>
   </div>
 
-  <!-- ── CAREER GOAL + PROGRESSION ── -->
+  <!-- CAREER GOAL + PROGRESSION -->
   <div class="grid-2">
-
     <div class="block">
-      <div class="block-header"><span class="icon">✏️</span> My Career Goal</div>
+      <div class="block-header">✏️ My Career Goal</div>
       <div class="block-body">
         <h2>My Career Goal</h2>
-        <p>I'm currently doing a Skills Bootcamp with the Development Manager in Tech and Cyber. We're covering hardware, networking, operating systems, and security. I think these are some of the most important and fast-growing areas today; tech is everywhere now!</p>
-        <p>Right now, my short-term goal is to get some hands-on experience in IT support to build the basics. Long-term, I want to become a Network Engineer, working with networks and infrastructure to keep systems running smoothly. This bootcamp is helping me get the knowledge and confidence to work toward that goal.</p>
+        <p>I'm currently doing a Skills Bootcamp with the Development Manager in Tech and Cyber. We're covering hardware, networking, operating systems, and security — some of the most important and fast-growing areas in technology today.</p>
+        <p>My <strong>short-term goal</strong> is to secure a role in IT support, building strong practical foundations. My <strong>long-term goal</strong> is to become a Network Engineer, working with networks and infrastructure to keep systems running smoothly and securely.</p>
+        <p>This bootcamp is giving me the knowledge, hands-on experience, and confidence to work toward that goal step by step.</p>
       </div>
     </div>
-
     <div class="block">
-      <div class="block-header"><span class="icon">✏️</span> My Career Progression</div>
+      <div class="block-header">✏️ My Career Progression</div>
       <div class="block-body">
-        <h2>My Career Progression —</h2>
+        <h2>My Career Progression</h2>
         <p><strong>What I learned:</strong></p>
-        <p>I spent time researching different tech roles, especially ones in networking, IT support, and data. I practised summarising job descriptions and spotting the skills employers look for, like problem-solving, logical thinking, and technical know-how. I also looked at companies to see what they value in their IT/Networking teams.</p>
+        <p>I spent time researching different tech roles — especially networking, IT support, and data. I practised summarising job descriptions and identifying the skills employers look for: problem-solving, logical thinking, and technical know-how. I also researched companies to understand what they value in their IT and networking teams.</p>
         <p><strong>What I now understand better:</strong></p>
-        <p>I can see that moving into networking takes both experience and learning the foundations first. Doing support tasks and small technical challenges now will make it easier to step up into network-focused roles later. It helped me get a clearer idea of what I want to do and how to plan for it.</p>
+        <p>Moving into networking requires both hands-on experience and strong foundations. Doing IT support tasks and small technical challenges now will make it much easier to step up into network-focused roles later.</p>
       </div>
     </div>
-
   </div>
 
-  <!-- ── CAREER & EXPERIENCE + ARTICULATION ── -->
+  <!-- CAREER & EXPERIENCE + PROFESSIONAL SKILLS -->
   <div class="grid-2">
-
     <div class="block">
-      <div class="block-header"><span class="icon">✏️</span> Career and Experience</div>
+      <div class="block-header">✏️ Career and Experience</div>
       <div class="block-body">
         <h2>Career and Experience</h2>
-        <p>A good way to still keep my job goal of becoming a network engineer is to see the lower level of the job — such as IT support. It's good to have this as the basis, as it will improve for future endeavours and help learn the basics to a further degree, but also provide a safe backup plan.</p>
-        <p>The experience I suggest is unique — going to as many employers and asking for career advice is a good way to understand how to actually reach that goal of joining the IT industry. There are also more ways, like joining IT forums such as Reddit. This can develop my understanding of what's happening, the common problems people face, and also connect with professionals.</p>
+        <p>A solid starting point for my goal of becoming a Network Engineer is to first build experience in IT support. This provides a strong foundation, improves future career progression, and ensures I develop the practical skills that networking roles require.</p>
+        <p>I am also expanding my industry knowledge by reaching out to employers for career advice, joining IT communities such as Reddit, and connecting with professionals in the field. This helps me understand real-world challenges and stay up to date with industry developments.</p>
         <p><strong>Articulation</strong></p>
-        <p>I'm currently working on improving my articulation by reading more and practising simple tongue twisters. Sometimes my explanations aren't as clear as I want them to be, so this is helping me speak more confidently and structure my thoughts better. Improving my communication is important, especially for the job roles I want in networking, where I'll need to explain technical issues clearly to colleagues or clients. It also helps me organise my ideas, focus on the key information, and think more clearly overall. This will benefit me in interviews, at work, and in daily life.</p>
+        <p>I am actively improving my articulation by reading widely and practising communication techniques. Clear communication is essential in networking roles — whether explaining a technical issue to a colleague or presenting a solution to a client. This ongoing development is improving my confidence, structure of thought, and professional presence.</p>
       </div>
     </div>
 
-    <!-- PROFESSIONAL SKILLS -->
     <div class="block">
-      <div class="block-header"><span class="icon">✏️</span> Professional Skills</div>
+      <div class="block-header">✏️ Professional &amp; Technical Skills</div>
       <div class="block-body">
         <h2>Professional Skills</h2>
-        <div style="margin-bottom:1.5rem;">
+        <div style="margin-bottom:1.4rem;">
           <div class="skill-row"><span class="skill-label">Communication</span><div class="skill-bar-bg"><div class="skill-bar" style="width:78%"></div></div></div>
           <div class="skill-row"><span class="skill-label">Problem Solving</span><div class="skill-bar-bg"><div class="skill-bar" style="width:82%"></div></div></div>
           <div class="skill-row"><span class="skill-label">Articulation</span><div class="skill-bar-bg"><div class="skill-bar" style="width:70%"></div></div></div>
@@ -483,91 +364,90 @@
         </div>
       </div>
     </div>
-
   </div>
 
-  <!-- ── MINI PROJECT ── -->
+  <!-- MINI PROJECTS -->
   <div class="block">
-    <div class="block-header"><span class="icon">✏️</span> Mini project</div>
+    <div class="block-header">✏️ Mini project</div>
     <div class="block-body">
-      <h2>Mini Projects</h2>
+      <h2>Projects &amp; Hands-on Work</h2>
       <div class="projects-grid">
 
         <div class="project-card">
           <div class="tags"><span class="tag">AWS</span><span class="tag">Fujitsu Cloud</span><span class="tag">Virtualisation</span></div>
           <div class="project-title">Cloud and Virtualisation</div>
           <div class="star-label">Situation</div><p>During a cloud fundamentals course, I needed to deploy a small virtual environment for testing applications.</p>
-          <div class="star-label">Task</div><p>My task was to set up virtual machines, configure user access, and ensure secure data storage.</p>
-          <div class="star-label">Action</div><p>I used AWS and Fujitsu cloud tools to create virtual machines, assigned roles and permissions, implemented access restrictions, and tested connectivity and backup processes.</p>
-          <div class="star-label">Result</div><p>The project was completed successfully with secure virtual machines running as intended, and I developed skills in cloud management, virtualisation and practical IT support.</p>
+          <div class="star-label">Task</div><p>Set up virtual machines, configure user access, and ensure secure data storage.</p>
+          <div class="star-label">Action</div><p>Used AWS and Fujitsu cloud tools to create virtual machines, assigned roles and permissions, implemented access restrictions, and tested connectivity and backup processes.</p>
+          <div class="star-label">Result</div><p>Project completed successfully with secure VMs running as intended. Developed skills in cloud management, virtualisation and practical IT support.</p>
         </div>
 
         <div class="project-card">
           <div class="tags"><span class="tag">Cybersecurity</span><span class="tag">Firewall</span><span class="tag">Risk Management</span></div>
           <div class="project-title">Cyber Security Lab Exercise</div>
           <div class="star-label">Situation</div><p>In an online cybersecurity module, I was tasked with protecting a small system against potential threats.</p>
-          <div class="star-label">Task</div><p>I needed to identify vulnerabilities and implement security measures to reduce risks.</p>
-          <div class="star-label">Action</div><p>I applied basic security configurations, such as setting strong passwords, enabling firewall rules, and simulating account access controls. I also ran tests to check for potential breaches and fixed any issues that arose.</p>
-          <div class="star-label">Result</div><p>The system passed all security tests, and I gained practical experience in cybersecurity practices and risk management in a controlled environment.</p>
+          <div class="star-label">Task</div><p>Identify vulnerabilities and implement security measures to reduce risks.</p>
+          <div class="star-label">Action</div><p>Applied basic security configurations — strong passwords, firewall rules, and account access controls. Ran tests to check for potential breaches and fixed issues that arose.</p>
+          <div class="star-label">Result</div><p>System passed all security tests. Gained practical experience in cybersecurity practices and risk management.</p>
         </div>
 
         <div class="project-card">
           <div class="tags"><span class="tag">Cisco Packet Tracer</span><span class="tag">VLANs</span><span class="tag">Routing</span></div>
           <div class="project-title">Virtual Network Simulation</div>
-          <div class="star-label">Situation</div><p>During a virtual IT training course, I was asked to design a small office network and ensure devices could communicate securely.</p>
-          <div class="star-label">Task</div><p>My task was to set up the network, configure VLANs, assign IP addresses, and implement basic security measures.</p>
-          <div class="star-label">Action</div><p>I used Cisco Packet Tracer to simulate the network, configured VLANs and routing, set up firewall rules, and tested connectivity between devices. I also documented the configuration process for future troubleshooting.</p>
-          <div class="star-label">Result</div><p>The network ran successfully in the simulation with no connectivity issues, and I developed confidence in applying networking and basic cybersecurity concepts to a practical environment.</p>
+          <div class="star-label">Situation</div><p>During virtual IT training, I was asked to design a small office network and ensure devices could communicate securely.</p>
+          <div class="star-label">Task</div><p>Set up the network, configure VLANs, assign IP addresses, and implement basic security measures.</p>
+          <div class="star-label">Action</div><p>Used Cisco Packet Tracer to simulate the network, configured VLANs and routing, set up firewall rules, tested connectivity, and documented the configuration for future troubleshooting.</p>
+          <div class="star-label">Result</div><p>Network ran successfully with no connectivity issues. Developed confidence applying networking and cybersecurity concepts practically.</p>
         </div>
 
         <div class="project-card">
           <div class="tags"><span class="tag">IT Support</span><span class="tag">Troubleshooting</span></div>
-          <div class="project-title">Printer Setup & Troubleshooting</div>
-          <p>I asked open and closed questions to understand the problem, connected the printer to WiFi, installed the app, and verified that it was working properly. This helped me improve my troubleshooting, communication, and professional problem-solving skills.</p>
+          <div class="project-title">Printer Setup &amp; Troubleshooting</div>
+          <p>Used open and closed questions to understand the problem, connected the printer to WiFi, installed the app, and verified operation. Improved troubleshooting, communication, and professional problem-solving skills.</p>
         </div>
 
         <div class="project-card">
           <div class="tags"><span class="tag">Linux</span><span class="tag">Scripting</span><span class="tag">Debugging</span></div>
           <div class="project-title">Linux Scripting</div>
-          <p>I practised basic Linux scripting, writing simple scripts for daily tasks like file management and calculations. At first, some commands didn't work, so I had to test and debug them carefully, which helped me build confidence and a logical approach to problem-solving.</p>
+          <p>Wrote simple Linux scripts for file management and calculations. Debugged commands that didn't initially work, building confidence and a logical approach to problem-solving.</p>
         </div>
 
         <div class="project-card">
-          <div class="tags"><span class="tag">Networking</span><span class="tag">Diagramming</span></div>
+          <div class="tags"><span class="tag">Networking</span><span class="tag">Diagramming</span><span class="tag">IP Addressing</span></div>
           <div class="project-title">Home Network Diagram</div>
-          <p>I created a network diagram of my home network, mapping out devices, connections, and IP addresses. This gave me a better understanding of network structure and device communication — a key skill for anyone wanting to move into network engineering.</p>
+          <p>Created a network diagram of my home network, mapping devices, connections, and IP addresses. Built a better understanding of network structure and device communication.</p>
         </div>
 
         <div class="project-card">
           <div class="tags"><span class="tag">Networking</span><span class="tag">DHCP</span><span class="tag">IP Management</span></div>
           <div class="project-title">Home Network Administration</div>
-          <p>I logged into my home router in administration mode to explore advanced settings. I reserved IP addresses for multiple devices, adjusted DHCP settings, tested connectivity, reviewed firewall options, and checked network security features.</p>
+          <p>Logged into my home router in admin mode, reserved IP addresses for multiple devices, adjusted DHCP settings, reviewed firewall options, and tested connectivity.</p>
           <div class="star-label">Skills Demonstrated</div>
-          <p>Network configuration · IP management · DHCP understanding · Device prioritisation</p>
+          <p>Network configuration · IP management · DHCP · Device prioritisation · Security review</p>
         </div>
 
         <div class="project-card">
-          <div class="tags"><span class="tag">Hardware</span><span class="tag">PCPartPicker</span><span class="tag">Budget</span></div>
+          <div class="tags"><span class="tag">Hardware</span><span class="tag">PCPartPicker</span><span class="tag">Budget Planning</span></div>
           <div class="project-title">PC Builds for 5 Job Roles</div>
-          <p>Designed and specified 5 different PC builds tailored to: 3D Digital Designer, Graphics Designer, Sales Manager, and 2× Sales Administrator. For each role I selected CPU, RAM, GPU and other components, compared Intel vs AMD and SATA SSD vs NVMe M.2, and calculated total costs using PCPartPicker.</p>
+          <p>Designed and specified 5 PC builds for: 3D Digital Designer, Graphics Designer, Sales Manager, and 2× Sales Administrator. Selected CPU, RAM, GPU per role; compared Intel vs AMD and SATA SSD vs NVMe M.2; calculated costs via PCPartPicker.</p>
           <div class="star-label">Skills Demonstrated</div>
-          <p>Hardware compatibility · Workload matching · Budget planning · Performance comparison · Technical decision-making</p>
+          <p>Hardware compatibility · Workload matching · Budget planning · Performance comparison</p>
         </div>
 
       </div>
     </div>
   </div>
 
-  <!-- ── EDUCATION ── -->
+  <!-- EDUCATION -->
   <div class="block">
-    <div class="block-header"><span class="icon">✏️</span> Education & Training</div>
+    <div class="block-header">✏️ Education &amp; Training</div>
     <div class="block-body">
-      <h2>Education & Training</h2>
-      <div class="timeline">
+      <h2>Education &amp; Training</h2>
+      <div>
         <div class="tl-item">
           <div class="tl-year">Current</div>
           <div>
-            <strong>Skills Bootcamp — Tech & Cyber</strong>
+            <strong>Skills Bootcamp — Tech &amp; Cyber</strong>
             <div class="tl-inst">The Development Manager (TDM)</div>
             <p>Covering hardware, networking, operating systems, and cybersecurity. Hands-on labs in cloud management, virtualisation, Linux scripting, and network simulation using Cisco Packet Tracer.</p>
           </div>
@@ -592,82 +472,62 @@
     </div>
   </div>
 
-  <!-- ── CERTIFICATES ── -->
+  <!-- CERTIFICATES -->
   <div class="block">
-    <div class="block-header"><span class="icon">✏️</span> Certificates</div>
+    <div class="block-header">✏️ Certificates</div>
     <div class="block-body">
       <h2>Certificates</h2>
       <div class="certs-grid">
-
-        <!--
-          =====================================================
-          CERTIFICATE 1
-          Replace YOUR_CERT_1_URL_HERE with the image path
-          e.g. src="images/cert-cloud.jpg"
-          Replace YOUR_CERT_1_FULLSIZE_URL_HERE in onclick
-          and in the href with the same or a full-size image
-          =====================================================
-        -->
-        <div class="cert-card" onclick="openLightbox('YOUR_CERT_1_FULLSIZE_URL_HERE')">
-          <img class="cert-img" src="YOUR_CERT_1_URL_HERE" alt="Cloud Fundamentals Certificate">
-          <div class="cert-info">
-            <div class="cert-title">Cloud Fundamentals</div>
-            <div class="cert-issuer">AWS / TDM Bootcamp</div>
-            <a class="cert-link" href="YOUR_CERT_1_FULLSIZE_URL_HERE" target="_blank">View full size →</a>
-          </div>
+        <div class="cert-card" onclick="openLightbox('1 (1).jpeg')">
+          <img class="cert-img" src="1 (1).jpeg" alt="Certificate 1">
+          <div class="cert-info"><div class="cert-title">Certificate 1</div><div class="cert-issuer">TDM Bootcamp</div><a class="cert-link" href="1 (1).jpeg" target="_blank">View full size →</a></div>
         </div>
-
-        <!--
-          CERTIFICATE 2 — replace YOUR_CERT_2_URL_HERE
-        -->
-        <div class="cert-card" onclick="openLightbox('YOUR_CERT_2_FULLSIZE_URL_HERE')">
-          <img class="cert-img" src="YOUR_CERT_2_URL_HERE" alt="Cybersecurity Certificate">
-          <div class="cert-info">
-            <div class="cert-title">Cybersecurity Basics</div>
-            <div class="cert-issuer">TDM Bootcamp</div>
-            <a class="cert-link" href="YOUR_CERT_2_FULLSIZE_URL_HERE" target="_blank">View full size →</a>
-          </div>
+        <div class="cert-card" onclick="openLightbox('1 (2).jpeg')">
+          <img class="cert-img" src="1 (2).jpeg" alt="Certificate 2">
+          <div class="cert-info"><div class="cert-title">Certificate 2</div><div class="cert-issuer">TDM Bootcamp</div><a class="cert-link" href="1 (2).jpeg" target="_blank">View full size →</a></div>
         </div>
-
-        <!--
-          CERTIFICATE 3 — replace YOUR_CERT_3_URL_HERE
-        -->
-        <div class="cert-card" onclick="openLightbox('YOUR_CERT_3_FULLSIZE_URL_HERE')">
-          <img class="cert-img" src="YOUR_CERT_3_URL_HERE" alt="Networking Certificate">
-          <div class="cert-info">
-            <div class="cert-title">Networking Fundamentals</div>
-            <div class="cert-issuer">TDM Bootcamp</div>
-            <a class="cert-link" href="YOUR_CERT_3_FULLSIZE_URL_HERE" target="_blank">View full size →</a>
-          </div>
+        <div class="cert-card" onclick="openLightbox('1 (3).jpeg')">
+          <img class="cert-img" src="1 (3).jpeg" alt="Certificate 3">
+          <div class="cert-info"><div class="cert-title">Certificate 3</div><div class="cert-issuer">TDM Bootcamp</div><a class="cert-link" href="1 (3).jpeg" target="_blank">View full size →</a></div>
         </div>
-
-        <!--
-          CERTIFICATE 4 — replace YOUR_CERT_4_URL_HERE
-        -->
-        <div class="cert-card" onclick="openLightbox('YOUR_CERT_4_FULLSIZE_URL_HERE')">
-          <img class="cert-img" src="YOUR_CERT_4_URL_HERE" alt="Certificate">
-          <div class="cert-info">
-            <div class="cert-title">Your Certificate Title</div>
-            <div class="cert-issuer">Issuer / Organisation</div>
-            <a class="cert-link" href="YOUR_CERT_4_FULLSIZE_URL_HERE" target="_blank">View full size →</a>
-          </div>
+        <div class="cert-card" onclick="openLightbox('1 (4).jpeg')">
+          <img class="cert-img" src="1 (4).jpeg" alt="Certificate 4">
+          <div class="cert-info"><div class="cert-title">Certificate 4</div><div class="cert-issuer">TDM Bootcamp</div><a class="cert-link" href="1 (4).jpeg" target="_blank">View full size →</a></div>
         </div>
-
+        <div class="cert-card" onclick="openLightbox('1 (5).jpeg')">
+          <img class="cert-img" src="1 (5).jpeg" alt="Certificate 5">
+          <div class="cert-info"><div class="cert-title">Certificate 5</div><div class="cert-issuer">TDM Bootcamp</div><a class="cert-link" href="1 (5).jpeg" target="_blank">View full size →</a></div>
+        </div>
+        <div class="cert-card" onclick="openLightbox('1 (6).jpeg')">
+          <img class="cert-img" src="1 (6).jpeg" alt="Certificate 6">
+          <div class="cert-info"><div class="cert-title">Certificate 6</div><div class="cert-issuer">TDM Bootcamp</div><a class="cert-link" href="1 (6).jpeg" target="_blank">View full size →</a></div>
+        </div>
+        <div class="cert-card" onclick="openLightbox('1 (7).jpeg')">
+          <img class="cert-img" src="1 (7).jpeg" alt="Certificate 7">
+          <div class="cert-info"><div class="cert-title">Certificate 7</div><div class="cert-issuer">TDM Bootcamp</div><a class="cert-link" href="1 (7).jpeg" target="_blank">View full size →</a></div>
+        </div>
+        <div class="cert-card" onclick="openLightbox('1 (8).jpeg')">
+          <img class="cert-img" src="1 (8).jpeg" alt="Certificate 8">
+          <div class="cert-info"><div class="cert-title">Certificate 8</div><div class="cert-issuer">TDM Bootcamp</div><a class="cert-link" href="1 (8).jpeg" target="_blank">View full size →</a></div>
+        </div>
+        <div class="cert-card" onclick="openLightbox('1 (9).jpeg')">
+          <img class="cert-img" src="1 (9).jpeg" alt="Certificate 9">
+          <div class="cert-info"><div class="cert-title">Certificate 9</div><div class="cert-issuer">TDM Bootcamp</div><a class="cert-link" href="1 (9).jpeg" target="_blank">View full size →</a></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ── CONTACT ── -->
+  <!-- CONTACT -->
   <div class="block">
-    <div class="block-header"><span class="icon">✏️</span> Contact</div>
+    <div class="block-header">✏️ Contact</div>
     <div class="block-body">
       <h2>Get In Touch</h2>
       <p>Whether it's an opportunity, advice, or a conversation about networking — I'm happy to hear from you.</p>
       <div class="contact-links">
-        <!-- REPLACE with your real email and LinkedIn URL -->
-        <a href="mailto:anildigpal@outlook.com" class="contact-chip">✉️anildigpal@outlook.com</a>
-        <a href="YOUR_LINKEDIN_PROFILE_URL_HERE" target="_blank" class="contact-chip">💼 LinkedIn</a>
-        <a href="+447463455065" target="_blank" class="contact-chip">📞 +447463455065</a>
+        <a href="mailto:anildigpal@outlook.com" class="contact-chip">✉️ anildigpal@outlook.com</a>
+        <a href="tel:07463455065" class="contact-chip">📞 07463 455065</a>
+        <a href="https://www.linkedin.com/in/anil-singh-75059b293?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="contact-chip">💼 LinkedIn</a>
       </div>
     </div>
   </div>
@@ -681,9 +541,7 @@
 </div>
 
 <!-- FOOTER -->
-<footer>
-  Anil Singh — IT & Networking Portfolio · TDM Skills Bootcamp · 2025
-</footer>
+<footer>Anil Singh — ICT Enthusiast &amp; Aspiring Network Engineer · TDM Skills Bootcamp · 2025</footer>
 
 <!-- LOGIN MODAL -->
 <div class="modal-overlay" id="loginModal" onclick="closeModalOutside(event)">
@@ -705,12 +563,10 @@
 </div>
 
 <script>
-  // Modal
   function openModal() { document.getElementById('loginModal').classList.add('open'); }
   function closeModal() { document.getElementById('loginModal').classList.remove('open'); }
   function closeModalOutside(e) { if (e.target.id === 'loginModal') closeModal(); }
 
-  // Google login — replace YOUR_GOOGLE_CLIENT_ID
   const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID';
   function handleGoogleLogin() {
     if (GOOGLE_CLIENT_ID === 'YOUR_GOOGLE_CLIENT_ID') {
@@ -734,9 +590,7 @@
     document.getElementById('loginBtn').style.display = '';
   }
 
-  // Lightbox
   function openLightbox(url) {
-    if (!url || url.includes('YOUR_CERT')) return;
     document.getElementById('lightboxImg').src = url;
     document.getElementById('lightbox').classList.add('open');
   }
